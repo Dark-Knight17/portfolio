@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Israel — Project Log</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#12141C;
+    --surface:#1B1E29;
+    --surface-2:#20232F;
+    --line:#2A2E3A;
+    --text:#E8E6DF;
+    --text-dim:#9A9CAA;
+    --amber:#F2A65A;
+    --teal:#6FA8A0;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:'IBM Plex Sans',sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{background:var(--amber);color:#1B1E29;}
+
+  .mono{font-family:'IBM Plex Mono',monospace;}
+
+  /* subtle scanline texture */
+  body::before{
+    content:"";
+    position:fixed;inset:0;
+    pointer-events:none;
+    background:repeating-linear-gradient(180deg, rgba(255,255,255,0.012) 0px, rgba(255,255,255,0.012) 1px, transparent 1px, transparent 3px);
+    z-index:1;
+  }
+
+  a{color:inherit;}
+
+  /* ===== HERO ===== */
+  .hero{
+    min-height:88vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    padding:8vh 8vw 6vh;
+    position:relative;
+    border-bottom:1px solid var(--line);
+  }
+  .hero-eyebrow{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:.8rem;
+    color:var(--teal);
+    letter-spacing:.08em;
+    margin-bottom:1.6rem;
+    display:flex;
+    align-items:center;
+    gap:.6rem;
+  }
+  .dot{
+    width:7px;height:7px;border-radius:50%;
+    background:var(--amber);
+    box-shadow:0 0 8px var(--amber);
+    animation:pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse{
+    0%,100%{opacity:1;}
+    50%{opacity:.35;}
+  }
+  .hero h1{
+    font-family:'IBM Plex Mono',monospace;
+    font-weight:600;
+    font-size:clamp(2rem, 5.4vw, 4.4rem);
+    line-height:1.08;
+    margin:0 0 1.6rem;
+    max-width:16ch;
+    letter-spacing:-.01em;
+  }
+  .type-caret{
+    display:inline-block;
+    width:.5ch;
+    background:var(--amber);
+    margin-left:.08em;
+    animation:blink 1s step-end infinite;
+  }
+  @keyframes blink{50%{opacity:0;}}
+
+  .hero p.sub{
+    font-size:clamp(1rem,1.6vw,1.2rem);
+    color:var(--text-dim);
+    max-width:52ch;
+    line-height:1.65;
+    margin:0 0 2.6rem;
+  }
+  .hero p.sub strong{color:var(--text);font-weight:600;}
+
+  .hero-links{
+    display:flex;
+    gap:1rem;
+    flex-wrap:wrap;
+  }
+  .btn{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:.85rem;
+    padding:.85rem 1.4rem;
+    border-radius:3px;
+    text-decoration:none;
+    border:1px solid var(--line);
+    transition:border-color .2s, transform .15s;
+    letter-spacing:.02em;
+  }
+  .btn:hover{border-color:var(--amber);transform:translateY(-1px);}
+  .btn.primary{background:var(--amber);color:#181A22;border-color:var(--amber);font-weight:600;}
+  .btn.primary:hover{opacity:.9;}
+
+  /* cadence graph signature element */
+  .cadence{
+    position:absolute;
+    right:8vw;
+    bottom:8vh;
+    width:min(360px, 32vw);
+    opacity:.9;
+  }
+  .cadence svg{width:100%;height:auto;display:block;}
+  .cadence-label{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:.68rem;
+    color:var(--text-dim);
+    letter-spacing:.06em;
+    margin-top:.5rem;
+    display:flex;
+    justify-content:space-between;
+  }
+  @media (max-width: 820px){
+    .cadence{display:none;}
+  }
+
+  /* ===== SECTION LABEL ===== */
+  .section-head{
+    padding:5rem 8vw 2rem;
+  }
+  .section-head .eyebrow{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:.78rem;
+    color:var(--teal);
+    letter-spacing:.06em;
+    margin-bottom:.8rem;
+  }
+  .section-head h2{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:clamp(1.4rem,2.6vw,2rem);
+    margin:0;
+    font-weight:600;
+  }
+
+  /* ===== PROJECTS ===== */
+  .projects{
+    padding:0 8vw 6rem;
+    display:flex;
+    flex-direction:column;
+    gap:5rem;
+  }
+  .project{
+    display:grid;
+    grid-template-columns:1.1fr .9fr;
+    gap:3rem;
+    align-items:start;
+    border-top:1px solid var(--line);
+    padding-top:2.6rem;
+  }
+  .project.reverse{
+    grid-template-columns:.9fr 1.1fr;
+  }
+  .project.reverse .project-media{order:2;}
+  .project.reverse .project-body{order:1;}
+
+  @media (max-width: 900px){
+    .project, .project.reverse{
+      grid-template-columns:1fr;
+    }
+    .project.reverse .project-media, .project.reverse .project-body{order:initial;}
+  }
+
+  .project-path{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:.78rem;
+    color:var(--text-dim);
+    margin-bottom:.9rem;
+  }
+  .project-path .flagship{color:var(--amber);}
+
+  .project h3{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:clamp(1.3rem,2vw,1.7rem);
+    margin:0 0 1rem;
+    font-weight:600;
+  }
+  .project p{
+    color:var(--text-dim);
+    line-height:1.7;
+    font-size:.98rem;
+    margin:0 0 1.4rem;
+  }
+  .project p strong{color:var(--text);font-weight:500;}
+
+  .tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:.5rem;
+  }
+  .tag{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:.72rem;
+    padding:.35rem .7rem;
+    border:1px solid var(--line);
+    border-radius:20px;
+    color:var(--teal);
+    letter-spacing:.02em;
+  }
+
+  .project-media{
+    position:relative;
+  }
+  video{
+    width:100%;
+    display:block;
+    border-radius:6px;
+    border:1px solid var(--line);
+    background:#000;
+  }
+  .media-caption{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:.7rem;
+    color:var(--text-dim);
+    margin-top:.7rem;
+    display:flex;
+    justify-content:space-between;
+  }
+
+  /* flagship project gets a highlighted card */
+  .project.flagship-card{
+    background:linear-gradient(180deg, rgba(242,166,90,0.045), transparent 60%);
+    border-top:1px solid var(--amber);
+    padding:2.6rem 2rem;
+    border-radius:8px;
+    margin:0 -2rem;
+  }
+  @media (max-width:900px){
+    .project.flagship-card{margin:0;padding:2.6rem 0;}
+  }
+
+  /* ===== FOOTER ===== */
+  footer{
+    padding:4rem 8vw 5rem;
+    border-top:1px solid var(--line);
+    text-align:center;
+  }
+  footer p{
+    font-family:'IBM Plex Mono',monospace;
+    color:var(--text-dim);
+    font-size:.85rem;
+  }
+  footer a.email{
+    color:var(--amber);
+    text-decoration:none;
+    border-bottom:1px solid transparent;
+  }
+  footer a.email:hover{border-bottom-color:var(--amber);}
+
+  @media (prefers-reduced-motion: reduce){
+    .dot, .type-caret{animation:none;}
+  }
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-eyebrow"><span class="dot"></span> AVAILABLE FOR INTERNSHIPS</div>
+  <h1 id="typed-heading"></h1>
+  <p class="sub">Computer Science graduate <strong>(Covenant University)</strong> — I build things end to end: interfaces, backends, and the occasional machine learning model to hold it together. Four projects below, demoed in motion rather than described in bullet points.</p>
+  <div class="hero-links">
+    <a href="#projects" class="btn primary">View projects ↓</a>
+    <a href="mailto:pedroisrael980@gmail.com" class="btn">Email me</a>
+    <a href="https://github.com/Dark-Knight17" class="btn">GitHub</a>
+  </div>
+
+  <div class="cadence">
+    <svg viewBox="0 0 320 90" xmlns="http://www.w3.org/2000/svg">
+      <line x1="0" y1="70" x2="320" y2="70" stroke="#2A2E3A" stroke-width="1"/>
+      <g id="keybars"></g>
+    </svg>
+    <div class="cadence-label"><span>keystroke interval</span><span>live demo below ↓</span></div>
+  </div>
+</section>
+
+<div class="section-head" id="projects">
+  <div class="eyebrow">// four builds</div>
+  <h2>What I've shipped</h2>
+</div>
+
+<div class="projects">
+
+  <div class="project">
+    <div class="project-media">
+      <video controls preload="metadata" poster="">
+        <source src="videos/game_hub.mp4" type="video/mp4">
+      </video>
+      <div class="media-caption"><span>game_hub.mp4</span><span>~80s</span></div>
+    </div>
+    <div class="project-body">
+      <div class="project-path">~/projects/game-hub</div>
+      <h3>Game Hub</h3>
+      <p>A single-page <strong>React</strong> app that collects several browser mini-games behind one hub interface — pick a game from the menu, play it inline, and jump back without a page reload. Built to practice component architecture and state management across multiple independent game logics living in one app.</p>
+      <div class="tags"><span class="tag">React</span><span class="tag">JavaScript</span><span class="tag">Component design</span></div>
+    </div>
+  </div>
+
+  <div class="project reverse">
+    <div class="project-media">
+      <video controls preload="metadata">
+        <source src="videos/context_word_tool.mp4" type="video/mp4">
+      </video>
+      <div class="media-caption"><span>context_word_tool.mp4</span><span>~40s</span></div>
+    </div>
+    <div class="project-body">
+      <div class="project-path">~/projects/context-word-tool</div>
+      <h3>Context Word Tool</h3>
+      <p>A <strong>Python</strong> command-line tool that returns a word's meaning in context — no cloud API, no internet dependency. It runs entirely against a local <strong>Gemma</strong> model served through <strong>Ollama</strong>, so lookups happen fully offline.</p>
+      <div class="tags"><span class="tag">Python</span><span class="tag">Gemma</span><span class="tag">Ollama</span><span class="tag">Offline inference</span></div>
+    </div>
+  </div>
+
+  <div class="project">
+    <div class="project-media">
+      <video controls preload="metadata">
+        <source src="videos/ping_pong.mp4" type="video/mp4">
+      </video>
+      <div class="media-caption"><span>ping_pong.mp4</span><span>~26s</span></div>
+    </div>
+    <div class="project-body">
+      <div class="project-path">~/projects/ping-pong</div>
+      <h3>Ping Pong</h3>
+      <p>A classic two-paddle Pong clone, built from scratch with <strong>vanilla HTML, CSS, and JavaScript</strong> — no game engine or framework. Covers canvas rendering, collision detection, and score tracking as a fundamentals exercise.</p>
+      <div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span><span class="tag">Canvas</span></div>
+    </div>
+  </div>
+
+  <div class="project flagship-card">
+    <div class="project-media">
+      <video controls preload="metadata">
+        <source src="videos/keystroke.mp4" type="video/mp4">
+      </video>
+      <div class="media-caption"><span>keystroke_dynamics_platform.mp4</span><span>~1:53</span></div>
+    </div>
+    <div class="project-body">
+      <div class="project-path">~/projects/keystroke-dynamics <span class="flagship">— Final Year Project</span></div>
+      <h3>Keystroke Dynamics Platform</h3>
+      <p>My defended Final Year Project: <strong>continuous authentication for online programming assessments</strong>, using keystroke typing rhythm instead of a one-time login check. The pipeline collects keystroke data through an API and stores it in <strong>PostgreSQL</strong>, then scores it against three deep learning models trained in Google Colab. A <strong>Transformer encoder</strong> came out on top (AUC 0.791, EER 0.227) and is the one deployed for live authentication in the demo.</p>
+      <p>Full-stack: <strong>FastAPI</strong> backend, <strong>React 19 / TypeScript</strong> frontend, trained and evaluated across three model architectures before selecting the best performer.</p>
+      <div class="tags"><span class="tag">FastAPI</span><span class="tag">PostgreSQL</span><span class="tag">React 19</span><span class="tag">TypeScript</span><span class="tag">Transformer</span><span class="tag">Deep Learning</span></div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <p>Built by Israel — reach out at <a class="email" href="mailto:pedroisrael980@gmail.com">pedroisrael980@gmail.com</a></p>
+</footer>
+
+<script>
+  // typewriter hero heading
+  const heading = document.getElementById('typed-heading');
+  const text = "I build things,\nthen I ship them.";
+  let i = 0;
+  function type(){
+    if(i <= text.length){
+      heading.innerHTML = text.slice(0,i).replace(/\n/g,'<br>') + '<span class="type-caret">&nbsp;</span>';
+      i++;
+      setTimeout(type, 38);
+    } else {
+      heading.innerHTML = text.replace(/\n/g,'<br>') + '<span class="type-caret">&nbsp;</span>';
+    }
+  }
+  type();
+
+  // cadence bar chart — simulated keystroke intervals (irregular, human-like)
+  const svgns = "http://www.w3.org/2000/svg";
+  const bars = document.getElementById('keybars');
+  const intervals = [22,40,18,55,30,15,48,25,60,20,35,44,19,50,28];
+  const bw = 320/intervals.length;
+  intervals.forEach((h,idx)=>{
+    const rect = document.createElementNS(svgns,'rect');
+    rect.setAttribute('x', idx*bw + 2);
+    rect.setAttribute('y', 70-h);
+    rect.setAttribute('width', bw-4);
+    rect.setAttribute('height', h);
+    rect.setAttribute('rx', 1.5);
+    rect.setAttribute('fill', idx % 3 === 0 ? '#F2A65A' : '#6FA8A0');
+    rect.setAttribute('opacity', '0.85');
+    bars.appendChild(rect);
+  });
+</script>
+
+</body>
+</html>
