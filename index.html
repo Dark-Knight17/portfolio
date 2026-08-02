@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Israel — Project Log</title>
+<title>Israel Pedro — Portfolio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -41,6 +41,42 @@
   }
 
   a{color:inherit;}
+
+  /* ===== HEADER NAV ===== */
+  .nav-bar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:1.5rem 8vw;
+    border-bottom:1px solid var(--line);
+    font-family:'IBM Plex Mono',monospace;
+  }
+  .nav-brand{
+    font-size:0.95rem;
+    font-weight:600;
+    letter-spacing:0.05em;
+    color:var(--text);
+    text-decoration:none;
+    display:flex;
+    align-items:center;
+    gap:0.5rem;
+  }
+  .nav-brand:hover{
+    color:var(--amber);
+  }
+  .nav-links{
+    display:flex;
+    gap:1.5rem;
+    font-size:0.82rem;
+    color:var(--text-dim);
+  }
+  .nav-links a{
+    text-decoration:none;
+    transition:color 0.2s;
+  }
+  .nav-links a:hover{
+    color:var(--amber);
+  }
 
   /* ===== HERO ===== */
   .hero{
@@ -279,10 +315,19 @@
 </head>
 <body>
 
+<header class="nav-bar">
+  <a href="#" class="nav-brand">ISRAEL PEDRO</a>
+  <nav class="nav-links">
+    <a href="#projects">Projects</a>
+    <a href="mailto:pedroisrael980@gmail.com">Contact</a>
+    <a href="https://github.com/Dark-Knight17" target="_blank" rel="noopener">GitHub</a>
+  </nav>
+</header>
+
 <section class="hero">
   <div class="hero-eyebrow"><span class="dot"></span> AVAILABLE FOR INTERNSHIPS</div>
   <h1 id="typed-heading"></h1>
-  <p class="sub">Computer Science graduate <strong>(Covenant University)</strong> — I build things end to end: interfaces, backends, and the occasional machine learning model to hold it together. Four projects below, demoed in motion rather than described in bullet points.</p>
+  <p class="sub">Hi, I'm <strong>Israel Pedro</strong>, a Computer Science graduate <strong>(Covenant University)</strong> — I build things end to end: interfaces, backends, and the occasional machine learning model to hold it together. Four projects below, demoed in motion rather than described in bullet points.</p>
   <div class="hero-links">
     <a href="#projects" class="btn primary">View projects ↓</a>
     <a href="mailto:pedroisrael980@gmail.com" class="btn">Email me</a>
@@ -369,7 +414,7 @@
 </div>
 
 <footer>
-  <p>Built by Israel — reach out at <a class="email" href="mailto:pedroisrael980@gmail.com">pedroisrael980@gmail.com</a></p>
+  <p>Built by Israel Pedro — reach out at <a class="email" href="mailto:pedroisrael980@gmail.com">pedroisrael980@gmail.com</a></p>
 </footer>
 
 <script>
