@@ -349,6 +349,60 @@
     .project.flagship-card{margin:0;padding:2.6rem 0;}
   }
 
+  /* ===== CHESS SECTION ===== */
+  .chess-section{
+    padding:0 8vw 5rem;
+  }
+  .chess-card{
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-radius:8px;
+    padding:2rem 2.4rem;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:2rem;
+  }
+  .chess-eyebrow{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:.78rem;
+    color:var(--teal);
+    letter-spacing:.06em;
+    margin-bottom:.5rem;
+  }
+  .chess-card h3{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:clamp(1.15rem, 1.8vw, 1.35rem);
+    margin:0 0 .5rem;
+    font-weight:600;
+    color:var(--text);
+  }
+  .chess-card p{
+    color:var(--text-dim);
+    line-height:1.6;
+    font-size:.95rem;
+    margin:0;
+    max-width:54ch;
+  }
+  .chess-card .btn{
+    flex-shrink:0;
+    white-space:nowrap;
+    transition:background .2s, color .2s, border-color .2s, transform .15s;
+  }
+  .chess-card .btn:hover{
+    background:var(--amber);
+    color:#000;
+    border-color:var(--amber);
+  }
+  @media (max-width: 768px){
+    .chess-card{
+      flex-direction:column;
+      align-items:flex-start;
+      gap:1.5rem;
+      padding:1.6rem 1.4rem;
+    }
+  }
+
   /* ===== FOOTER ===== */
   footer{
     padding:4rem 8vw 5rem;
@@ -488,6 +542,17 @@
   </div>
 
 </div>
+
+<section class="chess-section">
+  <div class="chess-card">
+    <div class="chess-body">
+      <div class="chess-eyebrow">// off the clock</div>
+      <h3>I play chess</h3>
+      <p>When I'm not building, I'm usually playing chess. Think you can beat me? Challenge me on Chess.com.</p>
+    </div>
+    <a href="https://www.chess.com/member/isdarknight" class="btn" target="_blank" rel="noopener noreferrer" aria-label="Challenge Israel Pedro on Chess.com">@isdarknight</a>
+  </div>
+</section>
 
 <footer>
   <p>Built by Israel Pedro — reach out at <a class="email" href="mailto:pedroisrael980@gmail.com">pedroisrael980@gmail.com</a> • <a class="email" href="tel:+2348166264674">+234 816 626 4674</a></p>
