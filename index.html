@@ -88,9 +88,47 @@
     position:relative;
     border-bottom:1px solid var(--line);
   }
+  .hero-content{
+    display:grid;
+    grid-template-columns:1.15fr 0.85fr;
+    align-items:start;
+    gap:4rem;
+    position:relative;
+    z-index:2;
+    width:100%;
+  }
+  .hero-text{
+    max-width:58ch;
+  }
+  .hero-feature{
+    display:flex;
+    justify-content:flex-end;
+    align-items:flex-start;
+    width:100%;
+    margin-top:2.4rem;
+  }
+  .hero-feature picture{
+    width:100%;
+    display:flex;
+    justify-content:flex-end;
+  }
+  .hero-portrait{
+    width:100%;
+    max-width:480px;
+    max-height:min(620px, 75vh);
+    height:auto;
+    aspect-ratio:4 / 5;
+    border-radius:18px;
+    object-fit:cover;
+    object-position:top center;
+    border:1px solid var(--line);
+    box-shadow:0 20px 48px rgba(0,0,0,0.45);
+    display:block;
+  }
   .hero-eyebrow{
     font-family:'IBM Plex Mono',monospace;
     font-size:.8rem;
+    line-height:1;
     color:var(--teal);
     letter-spacing:.08em;
     margin-bottom:1.6rem;
@@ -156,10 +194,8 @@
 
   /* cadence graph signature element */
   .cadence{
-    position:absolute;
-    right:8vw;
-    bottom:8vh;
-    width:min(360px, 32vw);
+    margin-top:2.6rem;
+    width:min(320px, 100%);
     opacity:.9;
   }
   .cadence svg{width:100%;height:auto;display:block;}
@@ -172,7 +208,28 @@
     display:flex;
     justify-content:space-between;
   }
-  @media (max-width: 820px){
+  @media (max-width: 900px){
+    .hero-content{
+      display:flex;
+      flex-direction:column;
+      gap:2.2rem;
+    }
+    .hero-feature{
+      order:-1;
+      justify-content:flex-start;
+      width:auto;
+      margin-top:0;
+    }
+    .hero-feature picture{
+      display:block;
+      width:auto;
+    }
+    .hero-portrait{
+      width:min(280px, 74vw);
+      max-height:none;
+      height:auto;
+      aspect-ratio:4 / 5;
+    }
     .cadence{display:none;}
   }
 
@@ -325,22 +382,38 @@
 </header>
 
 <section class="hero">
-  <div class="hero-eyebrow"><span class="dot"></span> AVAILABLE FOR INTERNSHIPS</div>
-  <h1 id="typed-heading"></h1>
-  <p class="sub">Hi, I'm <strong>Israel Pedro</strong>, a First Class Computer Science Graduate, <strong>Covenant University (Class of 2026)</strong> — I build things end to end: interfaces, backends, and the occasional machine learning model to hold it together. Four projects below, demoed in motion rather than described in bullet points.</p>
-  <div class="hero-links">
-    <a href="#projects" class="btn primary">View projects ↓</a>
-    <a href="mailto:pedroisrael980@gmail.com" class="btn">Email me</a>
-    <a href="tel:+2348166264674" class="btn">+234 816 626 4674</a>
-    <a href="https://github.com/Dark-Knight17" class="btn">GitHub</a>
-  </div>
+  <div class="hero-content">
+    <div class="hero-text">
+      <div class="hero-eyebrow"><span class="dot"></span> AVAILABLE FOR INTERNSHIPS</div>
+      <h1 id="typed-heading"></h1>
+      <p class="sub">Hi, I'm <strong>Israel Pedro</strong>, a First Class Computer Science Graduate, <strong>Covenant University (Class of 2026)</strong> — I build things end to end: interfaces, backends, and the occasional machine learning model to hold it together. Four projects below, demoed in motion rather than described in bullet points.</p>
+      <div class="hero-links">
+        <a href="#projects" class="btn primary">View projects ↓</a>
+        <a href="mailto:pedroisrael980@gmail.com" class="btn">Email me</a>
+        <a href="tel:+2348166264674" class="btn">+234 816 626 4674</a>
+        <a href="https://github.com/Dark-Knight17" class="btn">GitHub</a>
+      </div>
 
-  <div class="cadence">
-    <svg viewBox="0 0 320 90" xmlns="http://www.w3.org/2000/svg">
-      <line x1="0" y1="70" x2="320" y2="70" stroke="#2A2E3A" stroke-width="1"/>
-      <g id="keybars"></g>
-    </svg>
-    <div class="cadence-label"><span>keystroke interval</span><span>live demo below ↓</span></div>
+      <div class="cadence">
+        <svg viewBox="0 0 320 90" xmlns="http://www.w3.org/2000/svg">
+          <line x1="0" y1="70" x2="320" y2="70" stroke="#2A2E3A" stroke-width="1"/>
+          <g id="keybars"></g>
+        </svg>
+        <div class="cadence-label"><span>keystroke interval</span><span>live demo below ↓</span></div>
+      </div>
+    </div>
+
+    <div class="hero-feature">
+      <picture>
+        <source srcset="images/profile.webp" type="image/webp">
+        <img class="hero-portrait"
+             src="images/profile.jpg"
+             alt="Portrait of Israel Pedro, First Class Computer Science Graduate"
+             width="720"
+             height="900"
+             loading="eager">
+      </picture>
+    </div>
   </div>
 </section>
 
