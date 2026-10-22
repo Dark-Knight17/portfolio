@@ -4,6 +4,19 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Israel Pedro — Portfolio</title>
+<meta name="description" content="Israel Pedro, First Class Computer Science Graduate from Covenant University. Full-stack and machine learning projects.">
+<meta name="theme-color" content="#12141C">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%2312141C'/%3E%3Ctext x='50%25' y='52%25' dominant-baseline='central' text-anchor='middle' font-family='IBM Plex Mono, monospace' font-weight='700' font-size='28' fill='%23F2A65A'%3EIP%3C/text%3E%3C/svg%3E">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Israel Pedro — Portfolio">
+<meta property="og:description" content="Israel Pedro, First Class Computer Science Graduate from Covenant University. Full-stack and machine learning projects.">
+<meta property="og:url" content="https://dark-knight17.github.io/portfolio/">
+<meta property="og:image" content="https://dark-knight17.github.io/portfolio/images/profile.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Israel Pedro — Portfolio">
+<meta name="twitter:description" content="Israel Pedro, First Class Computer Science Graduate from Covenant University. Full-stack and machine learning projects.">
+<meta name="twitter:url" content="https://dark-knight17.github.io/portfolio/">
+<meta name="twitter:image" content="https://dark-knight17.github.io/portfolio/images/profile.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -191,23 +204,11 @@
   .btn:hover{border-color:var(--amber);transform:translateY(-1px);}
   .btn.primary{background:var(--amber);color:#181A22;border-color:var(--amber);font-weight:600;}
   .btn.primary:hover{opacity:.9;}
+  .btn-sm{
+    font-size:.8rem;
+    padding:.5rem .95rem;
+  }
 
-  /* cadence graph signature element */
-  .cadence{
-    margin-top:2.6rem;
-    width:min(320px, 100%);
-    opacity:.9;
-  }
-  .cadence svg{width:100%;height:auto;display:block;}
-  .cadence-label{
-    font-family:'IBM Plex Mono',monospace;
-    font-size:.68rem;
-    color:var(--text-dim);
-    letter-spacing:.06em;
-    margin-top:.5rem;
-    display:flex;
-    justify-content:space-between;
-  }
   @media (max-width: 900px){
     .hero-content{
       display:flex;
@@ -232,7 +233,6 @@
       aspect-ratio:4 / 5;
       margin:0 auto;
     }
-    .cadence{display:none;}
   }
 
   /* ===== SECTION LABEL ===== */
@@ -241,7 +241,7 @@
   }
   .section-head .eyebrow{
     font-family:'IBM Plex Mono',monospace;
-    font-size:.78rem;
+    font-size:.8rem;
     color:var(--teal);
     letter-spacing:.06em;
     margin-bottom:.8rem;
@@ -283,7 +283,7 @@
 
   .project-path{
     font-family:'IBM Plex Mono',monospace;
-    font-size:.78rem;
+    font-size:.8rem;
     color:var(--text-dim);
     margin-bottom:.9rem;
   }
@@ -310,12 +310,18 @@
   }
   .tag{
     font-family:'IBM Plex Mono',monospace;
-    font-size:.72rem;
+    font-size:.8rem;
     padding:.35rem .7rem;
     border:1px solid var(--line);
     border-radius:20px;
     color:var(--teal);
     letter-spacing:.02em;
+  }
+  .project-links{
+    display:flex;
+    gap:.75rem;
+    flex-wrap:wrap;
+    margin-top:1.2rem;
   }
 
   .project-media{
@@ -330,7 +336,7 @@
   }
   .media-caption{
     font-family:'IBM Plex Mono',monospace;
-    font-size:.7rem;
+    font-size:.8rem;
     color:var(--text-dim);
     margin-top:.7rem;
     display:flex;
@@ -365,7 +371,7 @@
   }
   .chess-eyebrow{
     font-family:'IBM Plex Mono',monospace;
-    font-size:.78rem;
+    font-size:.8rem;
     color:var(--teal);
     letter-spacing:.06em;
     margin-bottom:.5rem;
@@ -441,21 +447,12 @@
   <div class="hero-content">
     <div class="hero-text">
       <div class="hero-eyebrow"><span class="dot"></span> AVAILABLE FOR INTERNSHIPS</div>
-      <h1 id="typed-heading"></h1>
-      <p class="sub">Hi, I'm <strong>Israel Pedro</strong>, a First Class Computer Science Graduate, <strong>Covenant University (Class of 2026)</strong> — I build things end to end: interfaces, backends, and the occasional machine learning model to hold it together. Four projects below, demoed in motion rather than described in bullet points.</p>
+      <h1 id="typed-heading">I build things,<br>then I ship them.</h1>
+      <p class="sub">Hi, I'm <strong>Israel Pedro</strong>, a First Class Computer Science Graduate from <strong>Covenant University (Class of 2026)</strong>. I build full-stack apps and machine learning models.</p>
       <div class="hero-links">
         <a href="#projects" class="btn primary">View projects ↓</a>
+        <a href="cv/Israel_Pedro_CV.pdf" class="btn" download>Download CV</a>
         <a href="mailto:pedroisrael980@gmail.com" class="btn">Email me</a>
-        <a href="tel:+2348166264674" class="btn">+234 816 626 4674</a>
-        <a href="https://github.com/Dark-Knight17" class="btn">GitHub</a>
-      </div>
-
-      <div class="cadence">
-        <svg viewBox="0 0 320 90" xmlns="http://www.w3.org/2000/svg">
-          <line x1="0" y1="70" x2="320" y2="70" stroke="#2A2E3A" stroke-width="1"/>
-          <g id="keybars"></g>
-        </svg>
-        <div class="cadence-label"><span>keystroke interval</span><span>live demo below ↓</span></div>
       </div>
     </div>
 
@@ -480,27 +477,50 @@
 
 <div class="projects">
 
-  <div class="project">
+  <div class="project flagship-card">
     <div class="project-media">
-      <video controls preload="metadata" poster="">
+      <video controls preload="metadata" playsinline poster="images/posters/keystroke.jpg">
+        <source src="videos/keystroke.mp4" type="video/mp4">
+      </video>
+      <div class="media-caption"><span>Demo</span><span>1:53</span></div>
+    </div>
+    <div class="project-body">
+      <div class="project-path">~/projects/keystroke-dynamics <span class="flagship">— Final Year Project</span></div>
+      <h3>Keystroke Dynamics Platform</h3>
+      <p>My defended Final Year Project: <strong>continuous authentication for online programming assessments</strong>, using keystroke typing rhythm instead of a one-time login check. The pipeline collects keystroke data through an API and stores it in <strong>PostgreSQL</strong>, then scores it against three deep learning models trained in Google Colab. A <strong>Transformer encoder</strong> came out on top (AUC 0.791, EER 0.227) and is the one deployed for live authentication in the demo.</p>
+      <p>Full-stack: <strong>FastAPI</strong> backend, <strong>React 19 / TypeScript</strong> frontend, trained and evaluated across three model architectures before selecting the best performer.</p>
+      <div class="tags"><span class="tag">FastAPI</span><span class="tag">PostgreSQL</span><span class="tag">React 19</span><span class="tag">TypeScript</span><span class="tag">Transformer</span><span class="tag">Deep Learning</span></div>
+      <div class="project-links">
+        <a href="https://github.com/Dark-Knight17/keystroke-dynamics-thesis" class="btn btn-sm" target="_blank" rel="noopener noreferrer">Source code ↗</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="project reverse">
+    <div class="project-media">
+      <video controls preload="metadata" playsinline poster="images/posters/game_hub_audioless.jpg">
         <source src="videos/game_hub_audioless.mp4" type="video/mp4">
       </video>
-      <div class="media-caption"><span>game_hub.mp4</span><span>~40s</span></div>
+      <div class="media-caption"><span>Demo</span><span>0:40</span></div>
     </div>
     <div class="project-body">
       <div class="project-path">~/projects/game-hub</div>
       <h3>Game Hub</h3>
       <p>A <strong>React + TypeScript</strong> app for discovering video games, pulling live data from the <strong>RAWG.io API</strong>. Supports search plus genre and platform filters, with a detail view for each title (metascore, platforms, publishers, trailer). Styled with <strong>Tailwind CSS</strong> and deployed on <strong>Vercel</strong>.</p>
       <div class="tags"><span class="tag">React</span><span class="tag">TypeScript</span><span class="tag">Tailwind CSS</span><span class="tag">RAWG.io API</span></div>
+      <div class="project-links">
+        <a href="https://game-hub-black-chi.vercel.app/" class="btn btn-sm" target="_blank" rel="noopener noreferrer">Live demo ↗</a>
+        <a href="https://github.com/Dark-Knight17/game-hub" class="btn btn-sm" target="_blank" rel="noopener noreferrer">Source code ↗</a>
+      </div>
     </div>
   </div>
 
-  <div class="project reverse">
+  <div class="project">
     <div class="project-media">
-      <video controls preload="metadata">
+      <video controls preload="metadata" playsinline poster="images/posters/context_word_tool.jpg">
         <source src="videos/context_word_tool.mp4" type="video/mp4">
       </video>
-      <div class="media-caption"><span>context_word_tool.mp4</span><span>~40s</span></div>
+      <div class="media-caption"><span>Demo</span><span>0:40</span></div>
     </div>
     <div class="project-body">
       <div class="project-path">~/projects/context-word-tool</div>
@@ -510,34 +530,22 @@
     </div>
   </div>
 
-  <div class="project">
+  <div class="project reverse">
     <div class="project-media">
-      <video controls preload="metadata">
+      <video controls preload="metadata" playsinline poster="images/posters/issue_tracker.jpg">
         <source src="videos/issue_tracker.mp4" type="video/mp4">
       </video>
-      <div class="media-caption"><span>issue_tracker.mp4</span><span>~81s</span></div>
+      <div class="media-caption"><span>Demo</span><span>1:21</span></div>
     </div>
     <div class="project-body">
       <div class="project-path">~/projects/issue-tracker</div>
       <h3>Issue Tracker</h3>
       <p>A full-stack issue and bug tracking web app built with <strong>Next.js 15 (App Router)</strong>, <strong>TypeScript</strong>, and <strong>Radix UI</strong>. Features user authentication with <strong>NextAuth</strong>, role-based issue assignment, discussion threads, and Markdown editing with live previews. Includes an analytics dashboard with <strong>Recharts</strong> for issue status distributions, filtering, sorting, pagination, and error monitoring integrated with <strong>Sentry</strong>.</p>
       <div class="tags"><span class="tag">Next.js 15</span><span class="tag">TypeScript</span><span class="tag">Prisma</span><span class="tag">NextAuth</span><span class="tag">Radix UI</span><span class="tag">Recharts</span><span class="tag">Sentry</span></div>
-    </div>
-  </div>
-
-  <div class="project flagship-card">
-    <div class="project-media">
-      <video controls preload="metadata">
-        <source src="videos/keystroke.mp4" type="video/mp4">
-      </video>
-      <div class="media-caption"><span>keystroke_dynamics_platform.mp4</span><span>~1:53</span></div>
-    </div>
-    <div class="project-body">
-      <div class="project-path">~/projects/keystroke-dynamics <span class="flagship">— Final Year Project</span></div>
-      <h3>Keystroke Dynamics Platform</h3>
-      <p>My defended Final Year Project: <strong>continuous authentication for online programming assessments</strong>, using keystroke typing rhythm instead of a one-time login check. The pipeline collects keystroke data through an API and stores it in <strong>PostgreSQL</strong>, then scores it against three deep learning models trained in Google Colab. A <strong>Transformer encoder</strong> came out on top (AUC 0.791, EER 0.227) and is the one deployed for live authentication in the demo.</p>
-      <p>Full-stack: <strong>FastAPI</strong> backend, <strong>React 19 / TypeScript</strong> frontend, trained and evaluated across three model architectures before selecting the best performer.</p>
-      <div class="tags"><span class="tag">FastAPI</span><span class="tag">PostgreSQL</span><span class="tag">React 19</span><span class="tag">TypeScript</span><span class="tag">Transformer</span><span class="tag">Deep Learning</span></div>
+      <div class="project-links">
+        <a href="https://my-issue-tracker-sable.vercel.app/" class="btn btn-sm" target="_blank" rel="noopener noreferrer">Live demo ↗</a>
+        <a href="https://github.com/Dark-Knight17/my-issue-tracker" class="btn btn-sm" target="_blank" rel="noopener noreferrer">Source code ↗</a>
+      </div>
     </div>
   </div>
 
@@ -550,7 +558,7 @@
       <h3>I play chess</h3>
       <p>When I'm not building, I'm usually playing chess. Think you can beat me? Challenge me on Chess.com.</p>
     </div>
-    <a href="https://www.chess.com/member/isdarknight" class="btn" target="_blank" rel="noopener noreferrer" aria-label="Challenge Israel Pedro on Chess.com">@isdarknight</a>
+    <a href="https://www.chess.com/member/isdarknight" class="btn" target="_blank" rel="noopener noreferrer" aria-label="Challenge Israel Pedro on Chess.com">Challenge @isdarknight ↗</a>
   </div>
 </section>
 
@@ -562,34 +570,22 @@
   // typewriter hero heading
   const heading = document.getElementById('typed-heading');
   const text = "I build things,\nthen I ship them.";
-  let i = 0;
-  function type(){
-    if(i <= text.length){
-      heading.innerHTML = text.slice(0,i).replace(/\n/g,'<br>') + '<span class="type-caret">&nbsp;</span>';
-      i++;
-      setTimeout(type, 38);
-    } else {
-      heading.innerHTML = text.replace(/\n/g,'<br>') + '<span class="type-caret">&nbsp;</span>';
-    }
-  }
-  type();
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  // cadence bar chart — simulated keystroke intervals (irregular, human-like)
-  const svgns = "http://www.w3.org/2000/svg";
-  const bars = document.getElementById('keybars');
-  const intervals = [22,40,18,55,30,15,48,25,60,20,35,44,19,50,28];
-  const bw = 320/intervals.length;
-  intervals.forEach((h,idx)=>{
-    const rect = document.createElementNS(svgns,'rect');
-    rect.setAttribute('x', idx*bw + 2);
-    rect.setAttribute('y', 70-h);
-    rect.setAttribute('width', bw-4);
-    rect.setAttribute('height', h);
-    rect.setAttribute('rx', 1.5);
-    rect.setAttribute('fill', idx % 3 === 0 ? '#F2A65A' : '#6FA8A0');
-    rect.setAttribute('opacity', '0.85');
-    bars.appendChild(rect);
-  });
+  if (heading && !prefersReducedMotion) {
+    let i = 0;
+    heading.innerHTML = '<span class="type-caret">&nbsp;</span>';
+    function type(){
+      if(i <= text.length){
+        heading.innerHTML = text.slice(0,i).replace(/\n/g,'<br>') + '<span class="type-caret">&nbsp;</span>';
+        i++;
+        setTimeout(type, 38);
+      } else {
+        heading.innerHTML = text.replace(/\n/g,'<br>') + '<span class="type-caret">&nbsp;</span>';
+      }
+    }
+    type();
+  }
 </script>
 
 </body>
