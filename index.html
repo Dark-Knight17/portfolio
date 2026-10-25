@@ -341,6 +341,36 @@
     margin-top:.7rem;
     display:flex;
     justify-content:space-between;
+    align-items:center;
+  }
+  .speed-controls{
+    display:inline-flex;
+    align-items:center;
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-radius:4px;
+    padding:2px;
+    gap:2px;
+  }
+  .speed-btn{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:.72rem;
+    color:var(--text-dim);
+    background:transparent;
+    border:none;
+    border-radius:2px;
+    padding:.22rem .45rem;
+    cursor:pointer;
+    line-height:1;
+    transition:color .15s, background .15s;
+  }
+  .speed-btn:hover{
+    color:var(--text);
+  }
+  .speed-btn.active{
+    background:var(--amber);
+    color:#12141C;
+    font-weight:600;
   }
 
   /* flagship project gets a highlighted card */
@@ -482,7 +512,16 @@
       <video controls preload="metadata" playsinline poster="images/posters/keystroke.jpg">
         <source src="videos/keystroke.mp4" type="video/mp4">
       </video>
-      <div class="media-caption"><span>Demo</span><span>1:53</span></div>
+      <div class="media-caption">
+        <span>Demo</span>
+        <div class="speed-controls" role="group" aria-label="Playback speed">
+          <button type="button" class="speed-btn active" data-speed="1">1x</button>
+          <button type="button" class="speed-btn" data-speed="1.5">1.5x</button>
+          <button type="button" class="speed-btn" data-speed="2">2x</button>
+          <button type="button" class="speed-btn" data-speed="3">3x</button>
+        </div>
+        <span>1:53</span>
+      </div>
     </div>
     <div class="project-body">
       <div class="project-path">~/projects/keystroke-dynamics <span class="flagship">— Final Year Project</span></div>
@@ -501,7 +540,16 @@
       <video controls preload="metadata" playsinline poster="images/posters/game_hub_audioless.jpg">
         <source src="videos/game_hub_audioless.mp4" type="video/mp4">
       </video>
-      <div class="media-caption"><span>Demo</span><span>0:40</span></div>
+      <div class="media-caption">
+        <span>Demo</span>
+        <div class="speed-controls" role="group" aria-label="Playback speed">
+          <button type="button" class="speed-btn active" data-speed="1">1x</button>
+          <button type="button" class="speed-btn" data-speed="1.5">1.5x</button>
+          <button type="button" class="speed-btn" data-speed="2">2x</button>
+          <button type="button" class="speed-btn" data-speed="3">3x</button>
+        </div>
+        <span>0:40</span>
+      </div>
     </div>
     <div class="project-body">
       <div class="project-path">~/projects/game-hub</div>
@@ -520,7 +568,16 @@
       <video controls preload="metadata" playsinline poster="images/posters/context_word_tool.jpg">
         <source src="videos/context_word_tool.mp4" type="video/mp4">
       </video>
-      <div class="media-caption"><span>Demo</span><span>0:40</span></div>
+      <div class="media-caption">
+        <span>Demo</span>
+        <div class="speed-controls" role="group" aria-label="Playback speed">
+          <button type="button" class="speed-btn active" data-speed="1">1x</button>
+          <button type="button" class="speed-btn" data-speed="1.5">1.5x</button>
+          <button type="button" class="speed-btn" data-speed="2">2x</button>
+          <button type="button" class="speed-btn" data-speed="3">3x</button>
+        </div>
+        <span>0:40</span>
+      </div>
     </div>
     <div class="project-body">
       <div class="project-path">~/projects/context-word-tool</div>
@@ -535,7 +592,16 @@
       <video controls preload="metadata" playsinline poster="images/posters/issue_tracker.jpg">
         <source src="videos/issue_tracker.mp4" type="video/mp4">
       </video>
-      <div class="media-caption"><span>Demo</span><span>1:21</span></div>
+      <div class="media-caption">
+        <span>Demo</span>
+        <div class="speed-controls" role="group" aria-label="Playback speed">
+          <button type="button" class="speed-btn active" data-speed="1">1x</button>
+          <button type="button" class="speed-btn" data-speed="1.5">1.5x</button>
+          <button type="button" class="speed-btn" data-speed="2">2x</button>
+          <button type="button" class="speed-btn" data-speed="3">3x</button>
+        </div>
+        <span>1:21</span>
+      </div>
     </div>
     <div class="project-body">
       <div class="project-path">~/projects/issue-tracker</div>
@@ -586,6 +652,23 @@
     }
     type();
   }
+
+  // video playback speed controls
+  document.querySelectorAll('.project-media').forEach(media => {
+    const video = media.querySelector('video');
+    const buttons = media.querySelectorAll('.speed-btn');
+    if (!video || !buttons.length) return;
+
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const speed = parseFloat(btn.dataset.speed);
+        if (speed) {
+          video.playbackRate = speed;
+          buttons.forEach(b => b.classList.toggle('active', b === btn));
+        }
+      });
+    });
+  });
 </script>
 
 </body>
